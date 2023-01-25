@@ -33,5 +33,7 @@
     }
     html {
         font-family: 'Roboto';
+        background-color: #1B1717;
+        color: #EEEBDD;
     }
 }

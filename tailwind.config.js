@@ -22,7 +22,9 @@ module.exports = {
             lineHeight: '56px',
           }],
           lg: ['21px', '25px'],
-          sm: ['16px', '20px']
+          md: ['18px', '21px'],
+          sm: ['16px', '20px'],
+          xs: ['14px', '16px']
         },
         
       },
