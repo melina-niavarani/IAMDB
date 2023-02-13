@@ -1,6 +1,6 @@
 <template>
-    <section class="md:w-[504px]">
-        <h1 class="text-[32px] font-bold leading-10 md:text-xl">Iron Man</h1>
+    <section >
+        <h1 class="md:text-xl">Iron Man</h1>
         <p class=" text-sm mt-1.5 md:text-md">Directors: </p>
         <div class="mt-5 flex content-center items-center space-x-3 md:text-md md:mt-6">
             <span>2008 </span>
@@ -21,7 +21,7 @@
             After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.
         </p> 
         <div class="mt-[38px] md:mt-[42px]">
-            <h2 class="text-[24px] leading-7 md:text-[28px] md:leading-[50px]">Details</h2>
+            <h2 class="md:text-[28px] md:leading-[50px]">Details</h2>
             <DetailsTable/>
         </div>
     </section>

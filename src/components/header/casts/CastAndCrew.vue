@@ -1,6 +1,6 @@
 <template>
-    <section >
-        <h2 class="text-[24px] leading-[50px] font-bold md:text-[28px]">Cast & Crew</h2>
+    <section class="min-w-fit w-[265px]">
+        <h2 class="md:text-h2">Cast & Crew</h2>
         <CastList/>
         <div class="flex mt-[39px] justify-center items-center md:justify-start">
             <span class="text-accent-color text-md">Show all</span>

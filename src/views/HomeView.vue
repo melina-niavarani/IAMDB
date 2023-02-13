@@ -4,6 +4,7 @@
             <h1 class="pt-[220px] text-xl font-bold text-center md:pt-[250px] md:text-end md:text-xxl md:mb-[120px]">IAMDB</h1>
             <!-- search area -->
             <SearchBar/>
+            <!-- <button @click="getMoviesInfo">find movie</button> -->
         </section>
     </div>
 </template>
@@ -14,8 +15,31 @@
     export default {
         components: {
             SearchBar,
+        },
+        methods: {
+            getMoviesInfo(){
+                fetch('https://www.omdbapi.com/')
+                .then(response => response.text())
+                .then(res => JSON.parse(res))
+                .then(res => {
+                })
+                // .then(response => {
+                //     return response.text().then(text => {
+                //     const data = text && JSON.parse(text);
+
+                //     if (!response.ok) {
+                //         const error = data?.error?.details?.title || response.statusText;
+                //         return Promise.reject(error);
+                //     }
+                //     this.loading = false
+                //     this.food = data.meals[0] 
+                //     })
+                // })
+            }
         }
+        
     }
+
 </script>
 
 <style scoped>

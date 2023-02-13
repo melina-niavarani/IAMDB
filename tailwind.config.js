@@ -6,8 +6,10 @@ module.exports = {
     ],
     theme: {
       screens: {
-        sm: '360px',
-        md: '550px',
+        sm: '480px',
+        md: '768px',
+        lg: '976px',
+        xl: '1440px',
       },
       extend: {
         colors: {
@@ -21,6 +23,8 @@ module.exports = {
           xl: ['48px', {
             lineHeight: '56px',
           }],
+          h2: ['28px','50px'],
+          h2sm: ['24px', '50px'],
           lg: ['21px', '25px'],
           md: ['18px', '21px'],
           sm: ['16px', '20px'],

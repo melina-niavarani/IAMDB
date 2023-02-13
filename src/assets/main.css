@@ -36,4 +36,13 @@
         background-color: #1B1717;
         color: #EEEBDD;
     }
+    h1{
+        @apply text-[32px];
+        @apply font-bold;
+        @apply leading-10;
+    }
+    h2 {
+        @apply text-h2sm;
+        @apply font-bold;
+    }
 }

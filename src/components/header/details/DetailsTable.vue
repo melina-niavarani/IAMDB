@@ -17,7 +17,7 @@
                 <td class="w-[171px]"><h3 class="text-sm  md:text-md">Country of Origin</h3></td>
                 <td class="opacity-60 ">USA, Canada</td>
             </tr>
-            <tr>
+            <tr class="md:hidden">
                 <td class="w-[171px]"><h3 class="text-sm  md:text-md">IMDB Rating</h3></td>
                 <td class="opacity-60 ">7.9</td>
             </tr>
