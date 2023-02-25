@@ -1,7 +1,7 @@
 <template>
     <div class="bg-background-color text-light-gray cover "> 
         <section class="px-[15px] md:px-[120px]">
-            <h1 class="pt-[220px] text-xl font-bold text-center md:pt-[250px] md:text-end md:text-xxl md:mb-[120px]">IAMDB</h1>
+            <h1 @click="getMoviesInfo" class="pt-[220px] text-xl font-bold text-center md:pt-[250px] md:text-end md:text-xxl md:mb-[120px]">IAMDB</h1>
             <!-- search area -->
             <SearchBar/>
             <!-- <button @click="getMoviesInfo">find movie</button> -->
@@ -16,27 +16,31 @@
         components: {
             SearchBar,
         },
-        methods: {
-            getMoviesInfo(){
-                fetch('https://www.omdbapi.com/')
-                .then(response => response.text())
-                .then(res => JSON.parse(res))
-                .then(res => {
-                })
-                // .then(response => {
-                //     return response.text().then(text => {
-                //     const data = text && JSON.parse(text);
+        data(){
+            return{
+                requestOptions : {
+                    method: 'GET',
+                    redirect: 'follow'
+                }
+             }
+        },
+        // methods: {
+        //     getMoviesInfo(){
+        //         fetch('https://imdb-api.com/en/API/Search/k_61gu5fbz/inception 2010', this.requestOptions)
+        //         .then(response => response.json())
+        //         .then(result => {
+        //             const list = result.results;
+        //             // console.log(list)
+        //             list.map((item) => {
+        //                 const name = list.title;
+        //                 console.log(name)
+        //                 // const movie =  `<li><img src="${poster}"><h2>"${name}"</h2></li>`
+        //             }) 
+        //         })
+        //         .catch(error => console.log('error', error));
 
-                //     if (!response.ok) {
-                //         const error = data?.error?.details?.title || response.statusText;
-                //         return Promise.reject(error);
-                //     }
-                //     this.loading = false
-                //     this.food = data.meals[0] 
-                //     })
-                // })
-            }
-        }
+        //     }
+        // }
         
     }
 
