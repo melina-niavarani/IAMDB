@@ -18,7 +18,7 @@
 </template>
 
 <script>
-    import Cover from "@/components/header/Cover.vue";
+    import Cover from "@/components/header/cover/Cover.vue";
     import CastAndCrew from "@/components/header/casts/CastAndCrew.vue";
     import Details from "@/components/header/details/Details.vue";
     import Photos from "@/components/main/photos/Photos.vue";
