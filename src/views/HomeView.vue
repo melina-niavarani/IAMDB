@@ -16,31 +16,6 @@
         components: {
             SearchBar,
         },
-        data(){
-            return{
-                requestOptions : {
-                    method: 'GET',
-                    redirect: 'follow'
-                }
-             }
-        },
-        // methods: {
-        //     getMoviesInfo(){
-        //         fetch('https://imdb-api.com/en/API/Search/k_61gu5fbz/inception 2010', this.requestOptions)
-        //         .then(response => response.json())
-        //         .then(result => {
-        //             const list = result.results;
-        //             // console.log(list)
-        //             list.map((item) => {
-        //                 const name = list.title;
-        //                 console.log(name)
-        //                 // const movie =  `<li><img src="${poster}"><h2>"${name}"</h2></li>`
-        //             }) 
-        //         })
-        //         .catch(error => console.log('error', error));
-
-        //     }
-        // }
         
     }
 

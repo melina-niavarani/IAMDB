@@ -25,6 +25,9 @@
     import MoreLikeThis from "@/components/main/more/MoreLikeThis.vue";
     import Quastions from "@/components/main/questions/Questions.vue";
 
+    // import { ref, onBeforeMount } from 'vue'
+    // import { useRoute } from "vue-router";
+
     export default {
         components: {
             Cover,
@@ -36,9 +39,20 @@
         },
         data(){
             return {
-                photos: ['img1', 'img2']
+                photos: ['img1', 'img2'],
+                // movie: ref({}),
+                // route: useRoute()
             }
-        }
+        },
+        // setup(){ 
+        //     onBeforeMount(() => {
+        //         fetch(`https://imdb-api.com/API/AdvancedSearch/k_61gu5fbz/?id=${this.route.id}`)
+        //         .then(response => response.json()) 
+        //         .then(result => {
+        //             this.movies = result.results;
+        //         })
+        //     })
+        // }
     }
 </script>
 
