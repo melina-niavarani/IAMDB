@@ -16,19 +16,15 @@
 </template>
 
 <script>
-import "vue3-circle-progress/dist/circle-progress.css";
-import CircleProgress from "vue3-circle-progress";
-
 import RadialProgress from "vue3-radial-progress";
 import { ref } from "vue";
 
 export default {
     components: {
-        CircleProgress,
         RadialProgress
     },
     setup(){
-        const completedSteps = ref(7.9);
+        const completedSteps = ref(8);
         return {
             completedSteps,
         }

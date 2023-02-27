@@ -14,8 +14,8 @@
                 <a href="#" title="thrailer" target="_blank">Watch thrailer</a>
                 <span class="play ml-3"></span>
             </button>
-            <span class="share hover:bg-white/10 hover:rounded-[100px]"></span>
-            <span class="heart hover:bg-white/10 hover:rounded-[100px]"></span>
+            <span class="share hover:bg-white/10 hover:rounded-[100px] hover:cursor-pointer"></span>
+            <span class="heart hover:bg-white/10 hover:rounded-[100px] hover:cursor-pointer"></span>
         </div>
         <p class="mt-[39px] text-xs opacity-60 md:mt-10 md:text-sm">
             After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.

@@ -1,9 +1,9 @@
 <template>
-    <section class="min-w-fit w-[265px]">
+    <section class="min-w-fit w-[265px] ">
         <h2 class="md:text-h2">Cast & Crew</h2>
         <CastList/>
-        <div class="flex mt-[39px] justify-center items-center md:justify-start">
-            <span class="text-accent-color text-md">Show all</span>
+        <div class="flex mt-[39px] justify-center items-center hover:cursor-pointer md:justify-start">
+            <span class="text-accent-color text-md ">Show all</span>
             <span class="flash-icon"></span>
         </div>
     </section>
