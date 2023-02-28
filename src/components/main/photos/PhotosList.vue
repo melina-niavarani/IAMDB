@@ -1,46 +1,16 @@
 <template>
     <section>
         <div v-if="expand" class="pop-up-img">
-            <div class="relative">
-                <img class="rounded-xl full-screen-img" src="@/assets/images/d.jpg" alt="no1">
+            <div class="relative" >
+                <img class="rounded-xl full-screen-img" :src="_images.items[3]" alt="image.title">
                 <span  @click="expand = !expand" class="close"></span>
             </div>
         </div>
-        <ul class="flex flex-wrap gap-3 md:gap-6" >
-            <li @click="expand = !expand" class="photo-container relative rounded-xl  bg-black hover:cursor-pointer ">
-                <img class="rounded-xl h-[102.4] w-[159px] md:h-[144px] md:w-[216px]" src="@/assets/images/d.jpg" alt="no1">
-                <div class="absolute expand opacity-0"></div>
-            </li>
-            <li @click="expand = !expand" class="photo-container relative rounded-xl  bg-black hover:cursor-pointer ">
-                <img class="rounded-xl h-[102.4] w-[159px] md:h-[144px] md:w-[216px]" src="@/assets/images/d.jpg" alt="no1">
-                <div class="absolute expand opacity-0"></div>
-            </li>
-            <li @click="expand = !expand" class="photo-container relative rounded-xl  bg-black hover:cursor-pointer ">
-                <img class="rounded-xl h-[102.4] w-[159px] md:h-[144px] md:w-[216px]" src="@/assets/images/d.jpg" alt="no1">
-                <div class="absolute expand opacity-0"></div>
-            </li>
-            <li @click="expand = !expand" class="photo-container relative rounded-xl  bg-black hover:cursor-pointer ">
-                <img class="rounded-xl h-[102.4] w-[159px] md:h-[144px] md:w-[216px]" src="@/assets/images/d.jpg" alt="no1">
-                <div class="absolute expand opacity-0"></div>
-            </li>
-            <li @click="expand = !expand" class="photo-container relative rounded-xl  bg-black hover:cursor-pointer ">
-                <img class="rounded-xl h-[102.4] w-[159px] md:h-[144px] md:w-[216px]" src="@/assets/images/d.jpg" alt="no1">
-                <div class="absolute expand opacity-0"></div>
-            </li>
-            <li @click="expand = !expand" class="photo-container relative rounded-xl  bg-black hover:cursor-pointer ">
-                <img class="rounded-xl h-[102.4] w-[159px] md:h-[144px] md:w-[216px]" src="@/assets/images/d.jpg" alt="no1">
-                <div class="absolute expand opacity-0"></div>
-            </li>            <li @click="expand = !expand" class="photo-container relative rounded-xl  bg-black hover:cursor-pointer ">
-                <img class="rounded-xl h-[102.4] w-[159px] md:h-[144px] md:w-[216px]" src="@/assets/images/d.jpg" alt="no1">
-                <div class="absolute expand opacity-0"></div>
-            </li>            <li @click="expand = !expand" class="photo-container relative rounded-xl  bg-black hover:cursor-pointer ">
-                <img class="rounded-xl h-[102.4] w-[159px] md:h-[144px] md:w-[216px]" src="@/assets/images/d.jpg" alt="no1">
-                <div class="absolute expand opacity-0"></div>
-            </li>            <li @click="expand = !expand" class="photo-container relative rounded-xl  bg-black hover:cursor-pointer ">
-                <img class="rounded-xl h-[102.4] w-[159px] md:h-[144px] md:w-[216px]" src="@/assets/images/d.jpg" alt="no1">
-                <div class="absolute expand opacity-0"></div>
-            </li>            <li @click="expand = !expand" class="photo-container relative rounded-xl  bg-black hover:cursor-pointer ">
-                <img class="rounded-xl h-[102.4] w-[159px] md:h-[144px] md:w-[216px]" src="@/assets/images/d.jpg" alt="no1">
+        <ul class="flex flex-wrap gap-3 md:gap-6"
+        @click="log()" >
+            <li @click="expand = !expand" class="photo-container relative rounded-xl  bg-black hover:cursor-pointer "
+            v-for = "image in _images.items" >
+                <img class="rounded-xl h-[102.4] w-[159px] md:h-[144px] md:w-[216px]" :src="image.image" :alt="image.title">
                 <div class="absolute expand opacity-0"></div>
             </li>
         </ul>
@@ -54,6 +24,14 @@ export default {
             expand: false
         }
     },
+    props: [
+        "_images"
+    ],
+    methos: {
+        log(){
+            console.log(_images)
+        }
+    }
 }
 </script>
 

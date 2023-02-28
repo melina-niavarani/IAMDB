@@ -8,27 +8,23 @@
             innerStrokeWidth="6"
             strokeLinecap="thin"
             :diameter="80"
-            :completed-steps="completedSteps"
+            :completed-steps=" _movie.imDbRating "
             total-steps="10">
-                {{ completedSteps  }}  <!-- Your inner content here -->
+                {{ _movie.imDbRating }}  <!-- Your inner content here -->
         </RadialProgress>
     </div>
 </template>
 
 <script>
 import RadialProgress from "vue3-radial-progress";
-import { ref } from "vue";
 
 export default {
     components: {
         RadialProgress
     },
-    setup(){
-        const completedSteps = ref(8);
-        return {
-            completedSteps,
-        }
-    }
+    props: [
+        "_movie"
+    ]
 } 
 
 

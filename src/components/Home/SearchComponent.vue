@@ -12,18 +12,28 @@
                 <span class="search-icon p-3 h-[18px] w-[18px] ml-3 md:h-[21px] md:w-[21px]"></span>
             </div>
         </section>
-        <SearchResult v-if="movieFound" : ="movies"/>
-        <div v-for="movie in movies" :key="movie.id">
-            <router-link :to="'/details' + movie.id">
+        <!-- <div v-for="movie in movies" :key="movie.id">
+            <router-link :to="'/details/' + movie.id">
                 <div class="flex mb-2 hover:text-accent-color hover:cursor-pointer">
-                    <img class="w-[90px] h-[110px]" :src="movie.image" >
+                    <img class="w-[90px] h-[110px]"   >
                     <div class="pl-4 inline-block ">
                         <h3 class="mt-4 text-sm overflow-y-scroll mb-4 md:text-md md:w-[162px] ">{{ movie.title  }}</h3>
                         <p class="opacity-50 text-xs md:text-sm"> {{ movie.description }} </p>
                     </div>
                 </div>
             </router-link>
-        </div>
+        </div> -->
+        <ul>
+            <li v-for="movie in movies" :key="movie.id">
+                <router-link :to="'/details/' + movie.id" class="flex mb-2 hover:text-accent-color hover:cursor-pointer">
+                    <img class="w-[90px] h-[110px]" :src="movie.image"  >
+                    <div class="pl-4 inline-block ">
+                        <h3 class="mt-4 text-sm overflow-y-scroll mb-4 md:text-md md:w-[162px] "> {{ movie.title }}</h3>
+                        <p class="opacity-50 text-xs md:text-sm"> {{ movie.description }} </p>
+                    </div>
+                </router-link>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -44,33 +54,29 @@ export default {
     },
     data() {
         return {
-            movieFound: false,
             searchContent: '',
-            movies: ''
+            movies: '',
         };
     },
     methods: {
         GoToInfo(){
-            // this.$router.push('/details')
-            console.log(this.searchContent)
-        },
-        getRandomInt(min,max){
-            return Math.floor(Math.random() * (max-min) + min )
+            this.$router.push('/details/id')
         },
         getMoviesInfo(){
             if ( this.searchContent != ''){
-                fetch(`https://imdb-api.com/API/AdvancedSearch/k_61gu5fbz/?title=${this.searchContent}`, this.requestOptions)
+                // fetch(`http://www.omdbapi.com/?apikey=29f7e005&s=${this.searchContent}`)
+                fetch(`https://imdb-api.com/en/API/Search/k_61gu5fbz/${this.searchContent}`, this.requestOptions)
                 .then(response => response.json())
                 .then(result => {
-                    this.movieFound = true;
-                    this.movies = result.results;
+                    this.movies = result.results
+                    console.log(this.movies)
+                    // this.movies = result;
                     // this.movies.map((item) => {
                     //     this.movieId = this.movies.id
                     // }) 
                 })
                 .catch(error => console.log('error', error));
             }
-
         }
 
     }

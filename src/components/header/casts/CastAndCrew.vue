@@ -1,7 +1,7 @@
 <template>
     <section class="min-w-fit w-[265px] ">
         <h2 class="md:text-h2">Cast & Crew</h2>
-        <CastList/>
+        <CastList :_movie="_movie"/>
         <div class="flex mt-[39px] justify-center items-center hover:cursor-pointer md:justify-start">
             <span class="text-accent-color text-md ">Show all</span>
             <span class="flash-icon"></span>
@@ -16,6 +16,9 @@
         components: {
             CastList,
         },
+        props: [
+            "_movie" ,
+        ]
     }
 </script>
 

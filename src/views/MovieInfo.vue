@@ -1,18 +1,22 @@
 <template >
-    <div class="cover">
+    <div class="cover"
+         :style="{ backgroundImage: `linear-gradient(rgba(27, 23, 23, 0) 58.33%,
+                                    rgba(27, 23, 23, 0.8) 71.23%,
+                                    #1B1717 100%),
+                                    url(${ movies.image})` }">
         <!-- Movie Details -->
         <header class="px-[15px] md:px-[132px] pt-[164px] md:flex md:pr-[143px] md:pt-[521px] md:space-x-[60px]">
-                <Cover/>
-                <Details/>
-                <CastAndCrew/>
+                <Cover :_movie="movies"/>
+                <Details :_movie="movies"/>
+                <CastAndCrew :_movie="movies"/>
         </header>
         <main>
             <!-- Photos -->
-            <div class="px-[15px] md:px-[132px]"><Photos/></div>
+            <div class="px-[15px] md:px-[132px]"><Photos :_images="images"/></div>
             <!-- More Like This -->
-            <MoreLikeThis/>
+            <MoreLikeThis :_movie="movies"/>
             <!-- FAQs -->
-            <div class="px-[15px] md:px-[132px]"><Quastions/></div>
+            <div class="px-[15px] md:px-[132px]"><Quastions :_movie="movies"/></div>
         </main>
     </div>
 </template>
@@ -25,8 +29,7 @@
     import MoreLikeThis from "@/components/main/more/MoreLikeThis.vue";
     import Quastions from "@/components/main/questions/Questions.vue";
 
-    // import { ref, onBeforeMount } from 'vue'
-    // import { useRoute } from "vue-router";
+    import { useRoute } from "vue-router";
 
     export default {
         components: {
@@ -39,40 +42,59 @@
         },
         data(){
             return {
-                photos: ['img1', 'img2'],
-                // movie: ref({}),
-                // route: useRoute()
+                movies: '',
+                images: '',
+                route : useRoute()
             }
         },
-        // setup(){ 
-        //     onBeforeMount(() => {
-        //         fetch(`https://imdb-api.com/API/AdvancedSearch/k_61gu5fbz/?id=${this.route.id}`)
-        //         .then(response => response.json()) 
-        //         .then(result => {
-        //             this.movies = result.results;
-        //         })
-        //     })
-        // }
+        methods: { 
+            getInfo(){
+                if ( this.searchContent != ''){
+                    // fetch(`http://www.omdbapi.com/?apikey=29f7e005&i=${this.route.params.id}`)
+                    fetch(`https://imdb-api.com/en/API/Title/k_61gu5fbz/${this.route.params.id}`, this.requestOptions)
+                    .then(response => response.json())
+                    .then(result => {
+                        console.log(result)
+                        this.movies = result
+                        // this.movies = result.results;
+                    })
+                    .catch(error => console.log('error', error));
+                }
+            },
+            getPosters(){
+                fetch(`https://imdb-api.com/API/Images/k_61gu5fbz/${this.route.params.id}`, this.requestOptions)
+                    .then(response => response.json())
+                    .then(result => {
+                        console.log(result)
+                        this.images = result
+                        // this.movies = result.results;
+                    })
+                    .catch(error => console.log('error', error));
+            }
+        },
+        created() {
+            this.getInfo()
+            this.getPosters()
+        }
     }
 </script>
 
 <style scoped>
-
-.cover {
-        background-image: linear-gradient(rgba(27, 23, 23, 0) 58.33%,
+    .cover {
+        /* background-image: linear-gradient(rgba(27, 23, 23, 0) 58.33%,
                 rgba(27, 23, 23, 0.8) 71.23%,
                 #1B1717 100%),
-                url(@/assets/images/poster.jpeg);
+                url(@/assets/images/poster.jpeg); */
         height: 264px;
         background-position: top center;
         background-size: fill;
         background-repeat: no-repeat;
     }
-  
-@media (min-width: 550px) {
+
+    @media (min-width: 550px) {
     .cover {
         height: 100vh;
         background-size: cover;
     }
-}
+    }
 </style>
