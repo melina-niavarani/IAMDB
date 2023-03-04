@@ -12,10 +12,12 @@
         <div class="flex items-center mt-5 md:mt-6 space-x-[18px]">
             <button class="bg-accent-color hover:bg-accent-hover flex items-center text-sm py-3 pl-6 w-[177px] rounded-[100px] md:text-[21px] md:py-[18px] md:pl-8  md:w-[227px]">
                 <a href="#" title="thrailer" target="_blank">Watch thrailer</a>
-                <span class="play ml-3"></span>
+                <span  class="play ml-3"></span>
             </button>
-            <span class="share hover:bg-white/10 hover:rounded-[100px] hover:cursor-pointer"></span>
-            <span class="heart hover:bg-white/10 hover:rounded-[100px] hover:cursor-pointer"></span>
+            <span class="share bg-share hover:bg-white/10 hover:rounded-[100px] hover:cursor-pointer"></span>
+            <span @click="addToFavourite"
+            class="heart hover:bg-white/10  hover:rounded-[100px] hover:cursor-pointer"
+            :class="[isFavourite? `bg-heart-filled`: `bg-heart` ]"></span>
         </div>
         <p class="mt-[39px] text-xs opacity-60 md:mt-10 md:text-sm">
             {{_movie.plot}}
@@ -31,12 +33,26 @@
     import DetailsTable from "@/components/header/details/DetailsTable.vue";
 
     export default {
+        data(){
+            return {
+                backgroundUrl: '',
+                isFavourite: false,
+            }
+        },
         components: {
             DetailsTable,
         },
         props: [
             "_movie"
         ],
+        methods: {
+            addToFavourite(){
+                this.isFavourite = !this.isFavourite
+                if ( this.isFavourite ) {
+                    this._movie.title === true
+                }
+            }
+        }
     }
 </script>
 
@@ -49,7 +65,8 @@
     }
     .play,
     .share,
-    .heart {
+    .heart
+    {
         background-repeat: no-repeat;
         background-size: contain;
     }
@@ -60,14 +77,12 @@
         padding: 12px;
     }
     .share {
-        background-image: url(@/assets/images/share.svg);
         width: 44px;
         height: 44px;
         padding: 5px;
         margin-inline: 18px;
     }
     .heart {
-        background-image: url(@/assets/images/heart.svg);
         width: 44px;
         height: 44px;
         padding: 5px;
@@ -80,7 +95,8 @@
             height: 20px;
         }
         .share,
-        .heart {
+        .heart,
+        .heartLiked {
             width: 61px;
             height: 61px;
         }
