@@ -2,15 +2,16 @@
     <section>
         <div v-if="expand" class="pop-up-img">
             <div class="relative" >
-                <img class="rounded-xl full-screen-img" :src="_images.items[3]" alt="image.title">
+                <img class="rounded-xl full-screen-img" :src="imgSrc" alt="images" id="fullImg">
                 <span  @click="expand = !expand" class="close"></span>
             </div>
         </div>
-        <ul class="flex flex-wrap gap-3 md:gap-6"
-        @click="log()" >
-            <li @click="expand = !expand" class="photo-container relative rounded-xl  bg-black hover:cursor-pointer "
-            v-for = "image in _images.items" >
-                <img class="rounded-xl h-[102.4] w-[159px] md:h-[144px] md:w-[216px]" :src="image.image" :alt="image.title">
+        <ul class="flex flex-wrap gap-3 md:gap-6">
+            <li class="photo-container relative rounded-xl  bg-black hover:cursor-pointer "
+            v-for = "image in _images.items.slice(0, 10) " :key="image.title" >
+                <img class="rounded-xl h-[102.4] w-[159px] md:h-[144px] md:w-[216px] object-cover"
+                 :src="image.image" :alt="image.title"
+                 @click="enlargeImg(image.image)"  >
                 <div class="absolute expand opacity-0"></div>
             </li>
         </ul>
@@ -21,15 +22,20 @@
 export default {
     data(){
         return {
-            expand: false
+            expand: false,
+            imgSrc: ''
         }
     },
     props: [
         "_images"
     ],
-    methos: {
+    methods: {
+        enlargeImg(picSrc){
+            this.expand = true,
+            this.imgSrc = picSrc
+        },
         log(){
-            console.log(_images)
+            console.log(this._images.items.slice(0, 4))
         }
     }
 }

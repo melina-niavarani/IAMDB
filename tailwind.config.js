@@ -30,7 +30,13 @@ module.exports = {
           sm: ['16px', '20px'],
           xs: ['14px', '16px']
         },
-        
+        backgroundImage: {
+          'heart': "url('@/assets/images/heart.svg')",
+          'heart-filled': "url('@/assets/images/heartliked.svg')",
+          'share': " url(@/assets/images/share.svg)",
+          'red-heart': "url(@/assets/images/redheart.svg)",
+          'star': "url(@/assets/images/star.svg)",
+        }
       },
     },
     plugins: [], 

@@ -54,7 +54,6 @@
                     fetch(`https://imdb-api.com/en/API/Title/k_61gu5fbz/${this.route.params.id}`, this.requestOptions)
                     .then(response => response.json())
                     .then(result => {
-                        console.log(result)
                         this.movies = result
                         // this.movies = result.results;
                     })
@@ -65,9 +64,7 @@
                 fetch(`https://imdb-api.com/API/Images/k_61gu5fbz/${this.route.params.id}`, this.requestOptions)
                     .then(response => response.json())
                     .then(result => {
-                        console.log(result)
                         this.images = result
-                        // this.movies = result.results;
                     })
                     .catch(error => console.log('error', error));
             }
@@ -81,10 +78,6 @@
 
 <style scoped>
     .cover {
-        /* background-image: linear-gradient(rgba(27, 23, 23, 0) 58.33%,
-                rgba(27, 23, 23, 0.8) 71.23%,
-                #1B1717 100%),
-                url(@/assets/images/poster.jpeg); */
         height: 264px;
         background-position: top center;
         background-size: fill;

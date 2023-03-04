@@ -2,7 +2,7 @@
     <section>
         <ul >
             <li class="flex space-x-3 mt-6 items-center hover:cursor-pointer"
-                v-for="actor in _movie.actorList" >
+                v-for="actor in _movie.actorList.slice(0, 5)" >
                 <div >
                     <img class="w-[75px] h-[75px] rounded-[100px] object-top object-cover" :src="actor.image" :alt="actor.name ">
                 </div>
