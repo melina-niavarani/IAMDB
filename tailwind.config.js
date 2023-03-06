@@ -36,6 +36,8 @@ module.exports = {
           'share': " url(@/assets/images/share.svg)",
           'red-heart': "url(@/assets/images/redheart.svg)",
           'star': "url(@/assets/images/star.svg)",
+          'search-icon': "url(@/assets/images/search.svg)",
+          'flash-icon': "url(@/assets/images/flash.svg)",
         }
       },
     },
