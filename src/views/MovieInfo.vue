@@ -44,6 +44,7 @@
             return {
                 apiKey1: 'k_61gu5fbz',
                 apiKey2: 'k_crzfp1ws',
+                apiKey3: 'k_f2h9lgy2',
                 movies: '',
                 images: '',
                 poster: '',
@@ -53,7 +54,7 @@
         methods: { 
             getInfo(){
                 if ( this.searchContent != ''){
-                    fetch(`https://imdb-api.com/en/API/Title/${this.apiKey2}/${this.route.params.id}`, this.requestOptions)
+                    fetch(`https://imdb-api.com/en/API/Title/${this.apiKey1}/${this.route.params.id}`, this.requestOptions)
                     .then(response => response.json())
                     .then(result => {
                         this.movies = result
@@ -62,7 +63,7 @@
                 }
             },
             getImages(){
-                fetch(`https://imdb-api.com/API/Images/${this.apiKey2}/${this.route.params.id}`, this.requestOptions)
+                fetch(`https://imdb-api.com/API/Images/${this.apiKey1}/${this.route.params.id}`, this.requestOptions)
                     .then(response => response.json())
                     .then(result => {
                         this.images = result
@@ -70,7 +71,7 @@
                     .catch(error => console.log('error', error));
             },
             getPoster(){
-                fetch(`https://imdb-api.com/en/API/Posters/${this.apiKey2}/${this.route.params.id}`, this.requestOptions)
+                fetch(`https://imdb-api.com/en/API/Posters/${this.apiKey1}/${this.route.params.id}`, this.requestOptions)
                     .then(response => response.json())
                     .then(result => {
                         this.poster = result.posters[1].link
