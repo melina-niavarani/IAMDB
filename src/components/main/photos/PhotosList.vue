@@ -33,9 +33,6 @@ export default {
         enlargeImg(picSrc){
             this.expand = true,
             this.imgSrc = picSrc
-        },
-        log(){
-            console.log(this._images.items.slice(0, 4))
         }
     }
 }
