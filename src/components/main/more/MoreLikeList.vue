@@ -1,10 +1,10 @@
 <template>
     <section >
-        <carousel  :itemsToShow="3.95" :transition="10" :wrapAround="true" :autoplay="4000" >
+        <carousel  :itemsToShow="3.95" :transition="10" :wrapAround="true" :autoplay="4000" :breakpoints="breakpoints">
             <slide v-for="likeThis in _movie.similars" :key="_movie.id" >
-                <div class="mx-3">
+                <div class=" mx-3">
                     <router-link :to="'/details/' + likeThis.id" class="hover:cursor-pointer ">
-                        <div><img class="rounded-xl min-w-[230px] w-[342px] h-[342px] md:w-[409px] md:min-w-[276px] md:h-[409px] block" :src="likeThis.image" alt=""></div>
+                        <div><img class="rounded-xl w-[230px] h-[342px] md:w-[276px] md:h-[409px] inline-block" :src="likeThis.image" :alt="likeThis.title"></div>
                         <div class="flex justify-between mt-[13px] md:mt-3">
                             <h5 class="text-sm font-bold md:text-lg">{{ likeThis.title }}</h5>
                             <div>
@@ -28,6 +28,8 @@ import { Carousel, Slide } from 'vue3-carousel'
 import { mapState } from "pinia";
 import { useStorageList } from "@/stores/store.js"
 
+import 'vue3-carousel/dist/carousel.css'
+
 export default {
     components: {
         Carousel,
@@ -38,6 +40,30 @@ export default {
     ],
     computed: {
         ...mapState(useStorageList, ['favoriteList'] )
+    },    
+    data(){
+        return{
+            breakpoints: {
+                360: {
+                    itemsToShow: 1.5,
+                    snapAlign: 'start',
+                },
+                500: {
+                    itemsToShow: 2,
+                    snapAlign: 'center',
+                },
+            // 700px and up
+                700: {
+                    itemsToShow: 3,
+                    snapAlign: 'center',
+                },
+            // 1024 and up
+                1024: {
+                    itemsToShow: 5,
+                    snapAlign: 'center-even',
+                },
+            },
+        }
     }
 }
 </script>
