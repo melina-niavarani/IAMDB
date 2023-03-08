@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
-    "pinia": "^2.0.29",
+    "pinia": "^2.0.33",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6",
     "vue3-carousel": "^0.2.12",

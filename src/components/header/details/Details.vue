@@ -1,5 +1,13 @@
 <template>
     <section >
+        <div v-if="trailerRun" class="pop-up-img">
+            <div class="relative" >
+                <!-- <a :href="trailerMovie"></a> -->
+                <!-- <img :src="trailerMovie" > -->
+                <video  controls :src="trailerMovie"></video>
+                <span  @click="trailerRun = !trailerRun" class="close"></span>
+            </div>
+        </div>
         <h1 class="md:text-xl">{{_movie.title}}</h1>
         <p class=" text-sm mt-1.5 md:text-md">Directors:  {{_movie.directors}} </p>
         <div class="mt-5 flex content-center items-center space-x-3 md:text-md md:mt-6">
@@ -10,14 +18,17 @@
             <span>{{_movie.runtimeStr}}</span>
         </div>
         <div class="flex items-center mt-5 md:mt-6 space-x-[18px]">
-            <button class="bg-accent-color hover:bg-accent-hover flex items-center text-sm py-3 pl-6 w-[177px] rounded-[100px] md:text-[21px] md:py-[18px] md:pl-8  md:w-[227px]">
-                <a href="#" title="thrailer" target="_blank">Watch thrailer</a>
+            <button @click="watchThrailer" class="bg-accent-color hover:bg-accent-hover flex items-center text-sm py-3 pl-6 w-[177px] rounded-[100px] md:text-[21px] md:py-[18px] md:pl-8  md:w-[227px]">
+                <span>Watch thrailer</span>
                 <span  class="play ml-3"></span>
             </button>
-            <span class="share bg-share hover:bg-white/10 hover:rounded-[100px] hover:cursor-pointer"></span>
-            <span @click="addToFavourite"
-            class="heart hover:bg-white/10  hover:rounded-[100px] hover:cursor-pointer"
-            :class="[isFavourite? `bg-heart-filled`: `bg-heart` ]"></span>
+            <button @click="shareMovie" 
+            class="share bg-share hover:bg-white/10 hover:rounded-[100px]">
+                <shareList v-if="share"/>
+            </button>
+            <button @click="favoriteStatus() ,addTofavorite(_movie.id)"
+            class="heart hover:bg-white/10  hover:rounded-[100px] "
+            :class="[isFavorite? `bg-heart-filled`: `bg-heart` ]"></button>
         </div>
         <p class="mt-[39px] text-xs opacity-60 md:mt-10 md:text-sm">
             {{_movie.plot}}
@@ -31,28 +42,51 @@
 
 <script>
     import DetailsTable from "@/components/header/details/DetailsTable.vue";
+    import shareList from "@/components/main/more/share/Share.vue"
+
+    import { useRoute } from "vue-router";
+    import { mapStores, mapActions, mapState } from "pinia";
+    import { useStorageList } from "@/stores/store.js"
 
     export default {
         data(){
             return {
-                backgroundUrl: '',
-                isFavourite: false,
+                isFavorite: false,
+                trailerRun: false,
+                trailerMovie : '',
+                share: false,
+                route : useRoute()
             }
         },
         components: {
             DetailsTable,
+            shareList
         },
         props: [
             "_movie"
         ],
+        computed: {
+            ...mapStores(useStorageList),
+            // ...mapState(useStorageList, ['isFavorite'])
+        },
         methods: {
-            addToFavourite(){
-                this.isFavourite = !this.isFavourite
-                if ( this.isFavourite ) {
-                    this._movie.title === true
-                }
+            ...mapActions(useStorageList, ['addTofavorite']),
+            favoriteStatus(){
+              this.isFavorite = !this.isFavorite
+            },
+            shareMovie(){
+                this.share = !this.share
+            },
+            watchThrailer(){
+                this.trailerRun = !this.trailerRun
+                fetch(`https://imdb-api.com/API/Trailer/${this.apiKey2}/${this.route.params.id}`, this.requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    this.trailerMovie = result.linkEmbed
+                })
+                .catch(error => console.log('error', error));
             }
-        }
+        },
     }
 </script>
 
