@@ -16,7 +16,7 @@
             <!-- More Like This -->
             <MoreLikeThis :_movie="movies"/>
             <!-- FAQs -->
-            <Quastions class="px-[15px] md:px-[132px]" :_movie="movies"/>
+            <Quastions class="px-[15px] md:px-[132px]" :_faq="faq"/>
         </main>
     </div>
 </template>
@@ -48,41 +48,55 @@
                 movies: '',
                 images: '',
                 poster: '',
+                faq: '',
                 route : useRoute()
             }
         },
         methods: { 
-            getInfo(){
-                if ( this.searchContent != ''){
-                    fetch(`https://imdb-api.com/en/API/Title/${this.apiKey1}/${this.route.params.id}`, this.requestOptions)
-                    .then(response => response.json())
-                    .then(result => {
-                        this.movies = result
-                    })
-                    .catch(error => console.log('error', error));
-                }
+            getRandom(min, max){
+                return Math.floor(Math.random() * (max - min) + min)
             },
-            getImages(){
-                fetch(`https://imdb-api.com/API/Images/${this.apiKey1}/${this.route.params.id}`, this.requestOptions)
-                    .then(response => response.json())
-                    .then(result => {
-                        this.images = result
-                    })
-                    .catch(error => console.log('error', error));
+            async getInfo(){
+                await fetch(`https://imdb-api.com/en/API/Title/${this.apiKey1}/${this.route.params.id}`)
+                .then(response => response.json())
+                .then(result => {
+                    this.movies = result
+                })
+                .catch(error => console.log('error', error));
             },
-            getPoster(){
-                fetch(`https://imdb-api.com/en/API/Posters/${this.apiKey1}/${this.route.params.id}`, this.requestOptions)
-                    .then(response => response.json())
-                    .then(result => {
-                        this.poster = result.posters[1].link
-                    })
-                    .catch(error => console.log('error', error));
+            async getImages(){
+                await fetch(`https://imdb-api.com/API/Images/${this.apiKey1}/${this.route.params.id}`)
+                .then(response => response.json())
+                .then(result => {
+                    this.images = result
+                })
+                .catch(error => console.log('error', error));
+            },
+            async getPoster(){
+                await fetch(`https://imdb-api.com/en/API/Posters/${this.apiKey1}/${this.route.params.id}`)
+                .then(response => response.json())
+                .then(result => {
+                    this.poster = result.posters[this.getRandom(0, result.posters.length)].link
+                })
+                .catch(error => console.log('error', error));
+            },
+            getFaq() {
+                fetch(`https://imdb-api.com/API/FAQ/${this.apiKey1}/${this.route.params.id}`)
+                .then(response => response.json())
+                .then(result => {
+                    this.faq = result
+                    console.log(this.faq)
+                })
+
             }
+
         },
         created() {
+            this.getRandom()
             this.getInfo()
             this.getImages()
             this.getPoster()
+            this.getFaq() 
         }
     }
 </script>
