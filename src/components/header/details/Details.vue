@@ -2,9 +2,8 @@
     <section >
         <div v-if="trailerRun" class="pop-up-img">
             <div class="relative" >
-                <!-- <a :href="trailerMovie"></a> -->
-                <!-- <img :src="trailerMovie" > -->
-                <video  controls :src="trailerMovie"></video>
+                <iframe class="w-screen h-screen ml-[14%]"
+                :src="'movieTrailer'"/>
                 <span  @click="trailerRun = !trailerRun" class="close"></span>
             </div>
         </div>
@@ -18,7 +17,7 @@
             <span>{{_movie.runtimeStr}}</span>
         </div>
         <div class="flex items-center mt-5 md:mt-6 space-x-[18px]">
-            <button @click="watchThrailer" class="bg-accent-color hover:bg-accent-hover flex items-center text-sm py-3 pl-6 w-[177px] rounded-[100px] md:text-[21px] md:py-[18px] md:pl-8  md:w-[227px]">
+            <button @click="watchThrailer"  class="bg-accent-color hover:bg-accent-hover flex items-center text-sm py-3 pl-6 w-[177px] rounded-[100px] md:text-[21px] md:py-[18px] md:pl-8  md:w-[227px]">
                 <span>Watch thrailer</span>
                 <span  class="play ml-3"></span>
             </button>
@@ -43,9 +42,9 @@
 <script>
     import DetailsTable from "@/components/header/details/DetailsTable.vue";
     import shareList from "@/components/main/more/share/Share.vue"
-
+    
     import { useRoute } from "vue-router";
-    import { mapStores, mapActions, mapState } from "pinia";
+    import { mapStores, mapActions } from "pinia";
     import { useStorageList } from "@/stores/store.js"
 
     export default {
@@ -53,8 +52,10 @@
             return {
                 isFavorite: false,
                 trailerRun: false,
-                trailerMovie : '',
                 share: false,
+                apiKey1: 'k_61gu5fbz',
+                apiKey2: 'k_crzfp1ws',
+                movieTrailer : '',
                 route : useRoute()
             }
         },
@@ -67,7 +68,6 @@
         ],
         computed: {
             ...mapStores(useStorageList),
-            // ...mapState(useStorageList, ['isFavorite'])
         },
         methods: {
             ...mapActions(useStorageList, ['addTofavorite']),
@@ -79,10 +79,10 @@
             },
             watchThrailer(){
                 this.trailerRun = !this.trailerRun
-                fetch(`https://imdb-api.com/API/Trailer/${this.apiKey2}/${this.route.params.id}`, this.requestOptions)
+                fetch(`https://imdb-api.com/API/Trailer/${this.apiKey3}/${this.route.params.id}`)
                 .then(response => response.json())
                 .then(result => {
-                    this.trailerMovie = result.linkEmbed
+                    this.movieTrailer = result.linkEmbed
                 })
                 .catch(error => console.log('error', error));
             }
