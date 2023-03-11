@@ -14,16 +14,12 @@ const router = createRouter({
       name: 'details',
       component: () => import('../views/MovieInfo.vue')
     },
-    // {
-    //   path: '/details/:id/trailer',
-    //   name: 'trailer',
-    //   component: () => import('../views/MovieInfo.vue')
-    // },
-    // {
-    //   path: '/:pathMatch(.*)*',
-    //   name: 'not-found',
-    //   component: () => import('../views/404.vue')
-    // }
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('../views/404.vue')
+    },
+
   ]
 })
 
