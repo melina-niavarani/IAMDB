@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li v-for="movie in _movie.slice(0, 6)" :key="movie.id">
+        <li v-for="movie in _movie" :key="movie.id">
             <router-link :to="'/details/' + movie.id" class="flex mb-2 hover:text-accent-color hover:cursor-pointer">
                 <img class="w-[90px] h-[110px]" :src="movie.image"  >
                 <div class="pl-4 inline-block ">

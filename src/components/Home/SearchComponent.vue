@@ -46,7 +46,7 @@ export default {
                 fetch(`https://imdb-api.com/en/API/Search/${this.apiKey2}/${this.searchContent}`)
                 .then(response => response.json())
                 .then(result => {
-                    this.movies = result.results
+                    this.movies = result.results.slice(0, 4)
                     if (!result.ok) {
                         const error = data?.error?.details?.title || response.statusText;
                         return Promise.reject(error);
