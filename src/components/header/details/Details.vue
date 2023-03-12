@@ -1,5 +1,5 @@
 <template>
-    <section >
+    <section class="w-[504px]">
         <div v-if="trailerRun" class="pop-up-img">
             <div class="relative" >
                 <iframe class="w-screen h-screen ml-[14%]"
@@ -19,7 +19,7 @@
         <div class="flex items-center mt-5 md:mt-6 space-x-[18px]">
             <button @click="watchThrailer"  class="bg-accent-color hover:bg-accent-hover flex items-center text-sm py-3 pl-6 w-[177px] rounded-[100px] md:text-[21px] md:py-[18px] md:pl-8  md:w-[227px]">
                 <span>Watch thrailer</span>
-                <span  class="play ml-3"></span>
+                <span class="play ml-3"></span>
             </button>
             <button @click="shareMovie" 
             class="share bg-share hover:bg-white/10 hover:rounded-[100px]">
@@ -41,7 +41,7 @@
 
 <script>
     import DetailsTable from "@/components/header/details/DetailsTable.vue";
-    import shareList from "@/components/main/more/share/Share.vue"
+    import shareList from "@/components/header/details/Share.vue"
     
     import { useRoute } from "vue-router";
     import { mapStores, mapActions } from "pinia";
@@ -55,6 +55,7 @@
                 share: false,
                 apiKey1: 'k_61gu5fbz',
                 apiKey2: 'k_crzfp1ws',
+                apiKey4: 'k_35gf5vid',
                 movieTrailer : '',
                 route : useRoute()
             }
@@ -79,7 +80,7 @@
             },
             watchThrailer(){
                 this.trailerRun = !this.trailerRun
-                fetch(`https://imdb-api.com/API/Trailer/${this.apiKey3}/${this.route.params.id}`)
+                fetch(`https://imdb-api.com/API/Trailer/${this.apiKey1}/${this.route.params.id}`)
                 .then(response => response.json())
                 .then(result => {
                     this.movieTrailer = result.linkEmbed
