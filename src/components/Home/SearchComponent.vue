@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="mb-2 md:flex md:justify-center md:items-center md:space-x-3 ">
+        <section class="mb-2 md:centering md:space-x-3 ">
             <input v-on:keyup.enter="GoToInfo"
                 v-on:input="getMoviesInfo"
                 v-model="searchContent"  

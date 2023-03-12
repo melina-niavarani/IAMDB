@@ -38,6 +38,12 @@ module.exports = {
           'star': "url(@/assets/images/star.svg)",
           'search-icon': "url(@/assets/images/search.svg)",
           'flash-icon': "url(@/assets/images/flash.svg)",
+        },
+        backgroundPosition: {
+          'top-center': "center top"
+        },
+        backgroundSize: {
+          'fill': "100%"
         }
       },
     },

@@ -8,8 +8,8 @@
         </div>
         <ul class="flex flex-wrap gap-3 md:gap-6">
             <li class="photo-container relative rounded-xl  bg-black hover:cursor-pointer "
-            v-for = "image in _images.items.slice(0, 10) " :key="image.title" >
-                <img class="rounded-xl h-[102.4] w-[159px] md:h-[144px] md:w-[216px] object-cover object-top"
+            v-for = "image in  _images " :key="image.title" >
+                <img class="rounded-xl h-[102.4px] w-[159px] md:h-[144px] md:w-[216px] object-cover object-top block"
                  :src="image.image" :alt="image.title"
                  @click="enlargeImg(image.image)"  >
                 <div class="absolute expand opacity-0"></div>
@@ -23,7 +23,7 @@ export default {
     data(){
         return {
             expand: false,
-            imgSrc: ''
+            imgSrc: '',
         }
     },
     props: [

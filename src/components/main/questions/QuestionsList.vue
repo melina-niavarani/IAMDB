@@ -5,7 +5,7 @@
             v-for=" (FAQs, index) in _faq.items.slice(0, 9)" :key="index">
                 <p>{{ FAQs.index }}</p>
                 <p @click="answer[index] = !answer[index]" class="cursor-pointer text-md font-bold md:text-lg">{{ FAQs.question }}</p>
-                <p v-if="answer[index]" class="border-l-4 border-accent-color pl-6 mt-[18px] text-[12px] leading-[14px] opacity-60 md:pl-[28px] md:mt-1.5 md:text-sm md:leading-[19px] ">{{ FAQs.answer }}</p>
+                <p v-if="answer[index]" class="border-l-4 border-accent-color pl-4 mt-[18px] text-[12px] leading-[14px] opacity-60 md:pl-[28px] md:mt-1.5 md:text-sm md:leading-[19px] ">{{ FAQs.answer }}</p>
             </li>
         </ul>
     </div>

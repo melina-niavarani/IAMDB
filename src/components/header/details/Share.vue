@@ -1,19 +1,19 @@
 <template>
     <section>
         <ul class="bg-background-color relative z-10 top-0 left-[-60%] rounded-xl shadow-[0px_6px_12px_0px_#1B1717] text-center w-[200px] mt-[39px] text-xs border border-black md:mt-20 md:text-sm ">
-            <li class="flex my-2 py-2 items-center content-center gap-2 hover:bg-white/10 ">
+            <li class="centering my-2 py-2  gap-2 hover:bg-white/10 ">
                 <img src="@/assets/images/facebook.svg" class="w-10 h-10 ml-1 inline-block" alt="facebook">
                 <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fparse.com" class="opacity-60 p-2" target="_blank">Facebook</a>
             </li>
-            <li class="flex my-2 py-2 items-center gap-2 hover:bg-white/10 ">
+            <li class="centering my-2 py-2  gap-2 hover:bg-white/10 ">
                 <img src="@/assets/images/twitter.svg" class="w-10 h-10 ml-1 inline-block"  alt="twitter">
                 <a href="http://www.twitter.com/share" class="opacity-60 p-2" target="_blank">Twitter</a>
             </li>
-            <li class="flex my-2 py-2 items-center gap-2 hover:bg-white/10 ">
+            <li class="centering my-2 py-2  gap-2 hover:bg-white/10 ">
                 <img src="@/assets/images/envelope.png" class="w-10 h-10 ml-1 inline-block"  alt="email">
                 <a :href="'mailto:?subject=movie and series iamdb&body=Check out this site:' + baseUrl " class="opacity-60 p-2" target="_blank">Email Link</a>
             </li>
-            <li class="flex my-2 py-2 items-center gap-2 hover:bg-white/10 ">
+            <li class="centering my-2 py-2  gap-2 hover:bg-white/10 ">
                 <img src="@/assets/images/link.png" class="w-10 h-10 ml-1 inline-block"  alt="">
                 <div @click="coppyLink()" class="opacity-60 p-2" target="_blank">Copy Link</div>
             </li>

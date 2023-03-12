@@ -2,7 +2,7 @@
     <section class="hidden md:block mt-[-50px] min-w-fit">
         <img class="w-[276px] h-[415px] rounded-xl shadow-[0px_6px_12px_0px_#1B1717]" 
         :src="_movie.image" alt="movie-cover">
-        <div class="flex items-center mt-6">
+        <div class="centering mt-6">
             <div class="mr-[18px]">
                 <RatingCircle :_movie="_movie"/>
             </div>
