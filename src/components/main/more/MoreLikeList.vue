@@ -1,7 +1,7 @@
 <template>
     <section >
         <carousel  :itemsToShow="3.95" :transition="10" :wrapAround="true" :autoplay="4000" :breakpoints="breakpoints">
-            <slide v-for="likeThis in _movie.similars" :key="_movie.id" >
+            <slide v-for="likeThis in movies.similars" :key="movies.id" >
                 <div class=" mx-3">
                     <router-link :to="'/details/' + likeThis.id" class="hover:cursor-pointer ">
                         <div><img class="rounded-xl w-[230px] h-[342px] md:w-[276px] md:h-[409px] block" :src="likeThis.image" :alt="likeThis.title"></div>
@@ -26,7 +26,8 @@
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide } from 'vue3-carousel'
 import { mapState } from "pinia";
-import { useStorageList } from "@/stores/store.js"
+import { useStorageList, useFetchData  } from "@/stores/store.js"
+
 
 import 'vue3-carousel/dist/carousel.css'
 
@@ -35,11 +36,12 @@ export default {
         Carousel,
         Slide
     },
-    props: [
-        "_movie" ,
-    ],
+    // props: [
+    //     "_movie" ,
+    // ],
     computed: {
-        ...mapState(useStorageList, ['favoriteList'] )
+        ...mapState(useStorageList, ['favoriteList'] ),
+        ...mapState(useFetchData, ['movies'] )
     },    
     data(){
         return{

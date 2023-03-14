@@ -8,9 +8,9 @@
             innerStrokeWidth="6"
             strokeLinecap="thin"
             :diameter="80"
-            :completed-steps=" _movie.imDbRating "
+            :completed-steps=" movies.imDbRating "
             total-steps="10">
-                {{ _movie.imDbRating }}  <!-- Your inner content here -->
+                {{ movies.imDbRating }}  <!-- Your inner content here -->
         </RadialProgress>
     </div>
 </template>
@@ -18,13 +18,16 @@
 <script>
 import RadialProgress from "vue3-radial-progress";
 
+import { mapState} from "pinia";
+import { useFetchData } from "@/stores/store.js"
+
 export default {
     components: {
         RadialProgress
     },
-    props: [
-        "_movie"
-    ]
+    computed: {
+        ...mapState(useFetchData, ['movies'])
+    },
 } 
 
 
