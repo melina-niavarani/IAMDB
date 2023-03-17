@@ -1,6 +1,6 @@
 <template>
     <section>
-        <ul class="bg-background-color relative z-10 top-0 left-[-60%] rounded-xl shadow-[0px_6px_12px_0px_#1B1717] text-center w-[200px] mt-[39px] text-xs border border-black md:mt-20 md:text-sm ">
+        <ul class="bg-background-color relative z-10 top-[10px] right-[90px] md:top-0 md:left-[-60%] rounded-xl shadow-[0px_6px_12px_0px_#1B1717] text-center w-[200px] mt-[39px] text-xs border border-black md:mt-20 md:text-sm ">
             <li class="centering my-2 py-2  gap-2 hover:bg-white/10 ">
                 <img src="@/assets/images/facebook.svg" class="w-10 h-10 ml-1 inline-block" alt="facebook">
                 <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fparse.com" class="opacity-60 p-2" target="_blank">Facebook</a>

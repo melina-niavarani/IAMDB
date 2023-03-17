@@ -3,7 +3,7 @@
         <div v-if="trailerRun" class="pop-up-img">
             <div class="relative" >
                 <iframe class="w-screen h-screen ml-[14%]"
-                :src="'https://www.imdb.com/video/imdb/vi929409305/imdb/embed'"/>
+                :src="'movieTrailer'"/>
                 <span  @click="trailerRun = !trailerRun" class="close"></span>
             </div>
         </div>
@@ -43,8 +43,9 @@
     import DetailsTable from "@/components/header/details/DetailsTable.vue";
     import shareList from "@/components/header/details/Share.vue"
     
-    import { mapStores, mapActions, mapState} from "pinia";
+    import { mapStores, mapActions, mapState } from "pinia";
     import { useStorageList, useFetchData } from "@/stores/store.js"
+   
 
     export default {
         data(){

@@ -2,7 +2,7 @@
     <section>
         <div v-if="expand" class="pop-up-img">
             <div class="relative" >
-                <img class="rounded-xl full-screen-img" :src="imgSrc" alt="images" id="fullImg">
+                <img class="rounded-xl full-screen-img md:w-[946.5px] md:h-[631px]" :src="imgSrc" alt="images" id="fullImg">
                 <span  @click="expand = !expand" class="close"></span>
             </div>
         </div>
