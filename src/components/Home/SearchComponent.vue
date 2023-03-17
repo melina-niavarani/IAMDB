@@ -26,9 +26,10 @@ export default {
     },
     data() {
         return {
-            apiKey1: 'k_61gu5fbz',
-            apiKey2: 'k_crzfp1ws',
-            apiKey3: 'k_f2h9lgy2',
+            base_url: 'https://imdb-api.com/API',
+            // apiKey: 'k_61gu5fbz',
+            // apiKey: 'k_crzfp1ws',
+            apiKey: 'k_f2h9lgy2',
             searchContent: '',
             movies: '',
         };
@@ -43,7 +44,7 @@ export default {
         },
         getMoviesInfo(){ 
             if ( this.searchContent != ""){
-                fetch(`https://imdb-api.com/en/API/Search/${this.apiKey2}/${this.searchContent}`)
+                fetch(`${this.base_url}/Search/${this.apiKey}/${this.searchContent}`)
                 .then(response => response.json())
                 .then(result => {
                     this.movies = result.results.slice(0, 4)
