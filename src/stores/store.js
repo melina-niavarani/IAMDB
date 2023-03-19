@@ -48,27 +48,28 @@ export const useFetchData = defineStore('fetchMovieData', {
                 // this.route.replace('/:pathMatch(.*)*'),
                 console.log('error', error))
             setTimeout(() => {
+                // for Trailers //
                 fetch(`${this.base_url}/Trailer/${this.apiKey}/${this.route.params.id}`)
                 .then(response => response.json())
                 .then(result => {
                     this.movieTrailer = result.linkEmbed
                 })
                 .catch(error => console.log('error', error));
-
+                // for FAQ //
                 fetch(`${this.base_url}/FAQ/${this.apiKey}/${this.route.params.id}`)
                 .then(response => response.json())
                 .then(result => {
                     this.faq = result
                 })
                 .catch(error => console.log('error', error));
-
+                // for Images //
                 fetch(`${this.base_url}/Images/${this.apiKey}/${this.route.params.id}`)
                 .then(response => response.json())
                 .then(result => {
                     this.images = result.items.slice(0, 10)
                 })
                 .catch(error => console.log('error', error));
-                
+                // for Posters //
                 fetch(`${this.base_url}/Posters/${this.apiKey}/${this.route.params.id}`)
                 .then(response => response.json())
                 .then(result => {

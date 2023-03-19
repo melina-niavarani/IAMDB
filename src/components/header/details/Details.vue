@@ -12,7 +12,7 @@
         <div class="mt-5 centering space-x-3 md:text-md md:mt-6">
             <span>{{movies.year}} </span>
             <span class="dot"></span>
-            <span>{{movies.ratings}}</span>
+            <span>{{movies.contentRating}}</span>
             <span class="dot"></span>
             <span>{{movies.runtimeStr}}</span>
         </div>
@@ -69,6 +69,7 @@
             ...mapActions(useFetchData, ['watchThrailer']),
             // ...mapActions(useFetchData, ['getInfo']),
         }
+        
     }
 </script>
 
