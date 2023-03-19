@@ -43,9 +43,19 @@
             Quastions
         },
         computed: {
-            ...mapState(useFetchData, ['poster'])
-        }
+            ...mapState(useFetchData, ['poster']),
+            ...mapState(useFetchData, ['movies'])
+        },
+        watch: {
+            $route: {
+                immediate: true,
+                handler(to, from) {
+                    document.title = this.movies.title || 'IAMDB';
+                }
+            },
+        },
     }
+        
 </script>
 
 <style scoped>
