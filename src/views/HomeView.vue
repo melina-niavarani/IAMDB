@@ -3,18 +3,18 @@
         <section class="px-[15px] md:px-[120px]">
             <h1 @click="getMoviesInfo" class="pt-[220px] text-xl font-bold text-center md:pt-[250px] md:text-end md:text-xxl md:mb-[120px]">IAMDB</h1>
             <!-- search area -->
-            <SearchBar/>
+            <SearchComponent/>
             <!-- <button @click="getMoviesInfo">find movie</button> -->
         </section>
     </div>
 </template>
 
 <script>
-    import SearchBar from '@/components/home/SearchComponent.vue'
+    import SearchComponent from '@/components/home/SearchComponent.vue'
 
     export default {
         components: {
-            SearchBar,
+            SearchComponent,
         },
         
     }
