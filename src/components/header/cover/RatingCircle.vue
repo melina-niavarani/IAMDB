@@ -8,9 +8,9 @@
             innerStrokeWidth="6"
             strokeLinecap="thin"
             :diameter="80"
-            :completed-steps=" movies.imDbRating "
+            :completed-steps=" movies.vote_average "
             total-steps="10">
-                {{ movies.imDbRating }}  <!-- Your inner content here -->
+                {{ movies.vote_average?.toFixed(1) }}  <!-- Your inner content here -->
         </RadialProgress>
     </div>
 </template>

@@ -3,7 +3,7 @@
          :style="{ backgroundImage: `linear-gradient(rgba(27, 23, 23, 0) 58.33%,
                                     rgba(27, 23, 23, 0.8) 71.23%,
                                     #1B1717 100%),
-                                    url(${ poster })` }">
+                                    url(${ imagesUrl + movies.poster_path })` }">
         <!-- Movie Details -->
         <header class="px-[15px] md:px-[132px] pt-[164px] md:flex md:pr-[143px] md:pt-[521px] md:space-x-[60px]">
                 <Cover/>
@@ -43,8 +43,8 @@
             Quastions
         },
         computed: {
-            ...mapState(useFetchData, ['poster']),
-            ...mapState(useFetchData, ['movies'])
+            ...mapState(useFetchData, ['movies']),
+            ...mapState(useFetchData, ['imagesUrl'])
         },
         watch: {
             $route: {

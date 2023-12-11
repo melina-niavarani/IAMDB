@@ -26,16 +26,29 @@ export default {
     },
     data() {
         return {
-            base_url: 'https://imdb-api.com/API',
+            base_url: 'https://api.themoviedb.org/3',
+            // base_url: 'https://imdb-api.com/API',
             // apiKey: 'k_61gu5fbz',
             // apiKey: 'k_crzfp1ws',
-            apiKey: 'k_f2h9lgy2',
+            // apiKey: 'k_f2h9lgy2',
             searchContent: '',
             movies: '',
+            options : {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMTEzYzYwYTY4Y2FhMzRjYmRhZGM2NzI4MzVlMWJkZCIsInN1YiI6IjY1NzcwZGY5YmJlMWRkMDExYjkwNTFmMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eZaedGQGVuBuIlfquQrYwRAWvvLS12jv8eohZjfxhlQ'
+                }
+            }
         };
     },
     methods: {
         GoToInfo(){
+            // if (this.movies[0].title.toUpperCase().indexOf(this.searchContent.toUpperCase()) > -1 ) {  
+            //   this.$router.push(`/details/${this.movies[0].id}`)
+            // } else  {
+            //     this.$router.push(`/:pathMatch(.*)*`)
+            // }
             if (this.movies[0].title.toUpperCase().indexOf(this.searchContent.toUpperCase()) > -1 ) {  
               this.$router.push(`/details/${this.movies[0].id}`)
             } else  {
@@ -44,19 +57,30 @@ export default {
         },
         getMoviesInfo(){ 
             if ( this.searchContent != ""){
-                fetch(`${this.base_url}/Search/${this.apiKey}/${this.searchContent}`)
-                .then(response => response.json())
-                .then(result => {
-                    this.movies = result.results.slice(0, 4)
-                    if (!result.ok) {
-                        const error = data?.error?.details?.title || response.statusText;
-                        return Promise.reject(error);
-                    }
-                })
-                .catch(error => console.log('error', error));
+                // fetch(`${this.base_url}/Search/${this.apiKey}/${this.searchContent}`)
+                // .then(response => response.json())
+                // .then(result => {
+                //     this.movies = result.results.slice(0, 4)
+                //     this.movies = result
+                //     console.log(this.movies.Title)
+                //     if (!result.ok) {
+                //         const error = data?.error?.details?.title || response.statusText;
+                //         return Promise.reject(error);
+                //     }
+                // })
+                // .catch(error => console.log('error', error));
+
+                fetch(`${this.base_url}/search/movie?query=${this.searchContent}&page=1`, this.options)
+                    .then(response => response.json())
+                    .then(response => {
+                        this.movies = response.results.slice(0, 4)
+                        console.log(response)
+                    })
+                    .catch(err => console.error('error', err));
+
+                }
             }
         },
 
-    }
 }
 </script>

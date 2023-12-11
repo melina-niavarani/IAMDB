@@ -22,22 +22,22 @@
             CastList
         },
         computed: {
-            ...mapState(useFetchData, ['movies']),
+            ...mapState(useFetchData, ['casts']),
             actorsLoaded() {
-                let actors = this.movies.actorList;
+                let actors = this.casts;
                 return actors.slice(0, this.length);
             },
         },
         data() {
             return {
                 length: 5 ,
-                // actors: this.movies.actorList,
+                // actors: this.casts,
                 show : true
             }
         },
         methods: {
             showAll() {
-                let  actors = this.movies.actorList ;
+                let  actors = this.casts ;
                 this.show = !this.show
                 if (this.length >= actors.length) return;
                 this.length = actors.length;
@@ -48,7 +48,7 @@
             }
         }, 
         created(){
-            console.log(this.movies)
+            console.log('from cast&crew',this.casts)
         }
     }
 </script>

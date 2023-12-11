@@ -10,8 +10,8 @@
             <li class="photo-container relative rounded-xl  bg-black hover:cursor-pointer "
             v-for = "image in  images " :key="image.title" >
                 <img class="rounded-xl h-[102.4px] w-[159px] md:h-[144px] md:w-[216px] object-cover object-top block"
-                 :src="image.image" :alt="image.title"
-                 @click="enlargeImg(image.image)"  >
+                 :src="imagesUrl + image.file_path " :alt="image.title"
+                 @click="enlargeImg(image.file_path)"  >
                 <div class="absolute expand opacity-0"></div>
             </li>
         </ul>
@@ -19,12 +19,13 @@
 </template>
 
 <script>
-import { mapState} from "pinia";
-import { useFetchData } from "@/stores/store.js"
+import { mapState } from "pinia";
+import { useFetchData  } from "@/stores/store.js"
 
 export default {
     computed: {
-        ...mapState(useFetchData, ['images'])
+        ...mapState(useFetchData, ['images']),
+        ...mapState(useFetchData, ['imagesUrl'])
     },
     data(){
         return {
@@ -35,8 +36,9 @@ export default {
     methods: {
         enlargeImg(picSrc){
             this.expand = true,
-            this.imgSrc = picSrc
-        }
+            this.imgSrc = this.imagesUrl + picSrc
+            console.log('expand')
+        },
     }
 }
 </script>

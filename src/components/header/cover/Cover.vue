@@ -1,13 +1,13 @@
 <template>
     <section class="hidden md:block mt-[-50px] min-w-fit">
         <img class="w-[276px] h-[415px] rounded-xl shadow-[0px_6px_12px_0px_#1B1717]" 
-        :src="movies.image" alt="movie-cover">
+        :src="imagesUrl + movies.poster_path" alt="movie-cover">
         <div class="centering mt-6">
             <div class="mr-[18px]">
                 <RatingCircle/>
             </div>
             <div>
-                <span>{{ movies.imDbRatingVotes}}</span>
+                <span>{{ movies.vote_average?.toFixed(1)}}</span>
                 <h5>ratings on IMDB</h5>
             </div>
         </div>
@@ -25,8 +25,9 @@ export default {
         RatingCircle
     },
     computed: {
-        ...mapState(useFetchData, ['movies'])
-    },
+        ...mapState(useFetchData, ['movies']),
+        ...mapState(useFetchData, ['imagesUrl'])
+    }
 }
 </script>
 
