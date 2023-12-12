@@ -5,7 +5,7 @@
                                     #1B1717 100%),
                                     url(${ imagesUrl + movies.poster_path })` }">
         <!-- Movie Details -->
-        <header class="px-[15px] md:px-[132px] pt-[164px] md:flex md:pr-[143px] md:pt-[521px] md:space-x-[60px]">
+        <header class="px-[15px] md:px-[132px] pt-[164px] md:flex md:pr-[143px] md:pt-[521px] md:space-x-[60px] justify-center ">
                 <Cover/>
                 <Details/>
                 <CastAndCrew/>

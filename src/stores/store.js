@@ -98,7 +98,7 @@ export const useFetchData = defineStore('fetchMovieData', {
                     .then(response => response.json())
                     .then(response => {
                         this.movies = response
-                        console.log(response)
+                        // console.log(response)
                     })
                     .catch(err => console.error(err));
                 setTimeout(() => {
@@ -107,7 +107,6 @@ export const useFetchData = defineStore('fetchMovieData', {
                         .then(response => response.json())
                         .then(response => {
                             this.casts = response.cast
-                            this.directors = jsonData.crew.filter(({job})=> job ==='Director')
                         })
                         .catch(err => console.error(err));
                 // for similar //
@@ -128,7 +127,7 @@ export const useFetchData = defineStore('fetchMovieData', {
                     fetch(`${this.base_url}/movie/${this.route.params.id}/videos` , this.options)
                     .then(response => response.json())
                     .then(result => {
-                        console.log('trailers', result.results.slice(0, 1))
+                        // console.log('trailers', result.results.slice(0, 1))
                         this.movieTrailer = result.results.slice(0, 1)
                     })
                     .catch(error => console.log('error', error));
