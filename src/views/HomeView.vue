@@ -10,8 +10,7 @@
 </template>
 
 <script>
-    // import SearchComponent from '@/components/home/SearchComponent.vue'
-    import SearchComponent from '../components/home/SearchComponent.vue';
+    import SearchComponent from '@/components/home/SearchComponent.vue'
 
 
     export default {
